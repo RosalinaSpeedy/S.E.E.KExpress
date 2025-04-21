@@ -89,7 +89,7 @@ router.get('/getpost/:id', checkKey, function (req, res, next) {
 //https://stackoverflow.com/questions/2802713/changing-a-sum-returned-null-to-zero
 //https://stackoverflow.com/questions/73990118/sql-count-occurrences-of-an-id-from-another-table-in-multiple-rows
 router.get('/getposts', checkKey, function (req, res, next) {
-    const postId = req.body.postId;
+    //const postId = req.body.postId;
     console.log("Fetch posts")
     const sqlquery = `SELECT forumposts.id, forumposts.title, forumposts.body, forumposts.created, forumposts.edited, forumPosts.userId,
                       users.userName, users.email, SUM(IFNULL(forumposts.id = forumcomments.postId, 0)) as commentCount
