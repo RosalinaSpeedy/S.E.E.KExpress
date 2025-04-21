@@ -362,7 +362,7 @@ router.post('/handlereport/:id/:decision', checkKey, function (req, res, next) {
 })
 
 router.get('/getreportedposts', checkKey, function (req, res, next) {
-    const postId = req.body.postId;
+    //const postId = req.body.postId;
     console.log("Fetch posts")
     const sqlquery = `SELECT forumposts.id, forumposts.title, forumposts.body, forumposts.created, forumposts.edited, forumPosts.userId,
                       users.userName, users.email
