@@ -1,5 +1,5 @@
 const dotenv = require("dotenv")
-dotenv.config({ path: `.env` })
+dotenv.config()
 
 const { check, validationResult } = require('express-validator');
 const express = require("express")

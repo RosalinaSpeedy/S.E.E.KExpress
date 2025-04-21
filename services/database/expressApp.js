@@ -1,5 +1,5 @@
 //Databases and the web code (ammended)
-require('@dotenvx/dotenvx').config({ path: `.env` });
+require('@dotenvx/dotenvx').config();
 
 
 // Import express and express-session
