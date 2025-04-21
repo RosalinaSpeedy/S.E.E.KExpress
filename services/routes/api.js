@@ -52,7 +52,7 @@ router.post('/deletepost/:id', checkKey, function (req, res, next) {
 router.get('/getpost/:id', checkKey, function (req, res, next) {
     console.log("Fetch posts")
     const postId = req.params.id;
-    const sqlquery = `SELECT forumposts.id, forumposts.title, forumposts.body, forumposts.created, forumposts.edited, forumPosts.userId,
+    const sqlquery = `SELECT forumposts.id, forumposts.title, forumposts.body, forumposts.created, forumposts.edited, forumposts.userId,
                       users.userName, users.email 
                       FROM forumposts
                       INNER JOIN users ON forumposts.userId = users.id
@@ -91,7 +91,7 @@ router.get('/getpost/:id', checkKey, function (req, res, next) {
 router.get('/getposts', checkKey, function (req, res, next) {
     //const postId = req.body.postId;
     console.log("Fetch posts")
-    const sqlquery = `SELECT forumposts.id, forumposts.title, forumposts.body, forumposts.created, forumposts.edited, forumPosts.userId,
+    const sqlquery = `SELECT forumposts.id, forumposts.title, forumposts.body, forumposts.created, forumposts.edited, forumposts.userId,
                       users.userName, users.email, SUM(IFNULL(forumposts.id = forumcomments.postId, 0)) as commentCount
                       FROM forumposts
                       LEFT OUTER JOIN users ON forumposts.userId = users.id
@@ -364,7 +364,7 @@ router.post('/handlereport/:id/:decision', checkKey, function (req, res, next) {
 router.get('/getreportedposts', checkKey, function (req, res, next) {
     //const postId = req.body.postId;
     console.log("Fetch posts")
-    const sqlquery = `SELECT forumposts.id, forumposts.title, forumposts.body, forumposts.created, forumposts.edited, forumPosts.userId,
+    const sqlquery = `SELECT forumposts.id, forumposts.title, forumposts.body, forumposts.created, forumposts.edited, forumposts.userId,
                       users.userName, users.email
                       FROM forumposts
                       LEFT OUTER JOIN users ON forumposts.userId = users.id
