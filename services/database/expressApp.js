@@ -18,7 +18,7 @@ var mysql = require('mysql2')
 const app = express()
 var cors = require('cors');
 app.use(cors());
-const port = 8000
+const port = process.env.PORT || 8000
 
 // Set up the body parser 
 app.use(express.urlencoded({ extended: true }))
@@ -59,4 +59,4 @@ const apiRoutes = require('../routes/api')
 app.use('/api', apiRoutes)
 
 // Start the web app listening
-app.listen(port, () => console.log(`Node app listening on port ${port}!`))
+app.listen(process.env.PORT || 8000, () => console.log(`Node app listening on port ${port}!`))
