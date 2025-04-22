@@ -33,7 +33,7 @@ app.use(expressSanitizer());
 //     password: 'qwertyuiop',
 //     database: 'seek_forum'
 // })
-const pool = mysql.createPool({
+const db = mysql.createConnection({
     host: process.env.HOST_NAME,
     user: process.env.USER,
     password: process.env.PASSWORD,
@@ -41,22 +41,6 @@ const pool = mysql.createPool({
     keepAliveInitialDelay: 10000, // 0 by default.
     enableKeepAlive: true, // false by default.
 }); 
-// const db = mysql.createConnection({
-//     host: process.env.HOST_NAME,
-//     user: process.env.USER,
-//     password: process.env.PASSWORD,
-//     database: process.env.DATABASE
-// })
-//console.log(db)
-// Connect to the database
-const db = pool.createConnection({
-    host: process.env.HOST_NAME,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE,
-    keepAliveInitialDelay: 10000, // 0 by default.
-    enableKeepAlive: true, // false by default.
-})
 // Connect to the database
 db.connect((err) => {
     if (err) {
