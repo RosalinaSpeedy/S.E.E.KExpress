@@ -33,7 +33,7 @@ app.use(expressSanitizer());
 //     password: 'qwertyuiop',
 //     database: 'seek_forum'
 // })
-const db = new Pool({
+const db = mysql.createPool({
     create: () => {
         return mysql.createConnection({
             host: process.env.HOST_NAME,
