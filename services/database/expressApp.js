@@ -27,12 +27,31 @@ app.use(express.urlencoded({ extended: true }))
 app.use(expressSanitizer());
 
 // Define the database connection
-const db = mysql.createConnection({
-    host: process.env.HOST_NAME,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE
-})
+// const db = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'seek_forum_app',
+//     password: 'qwertyuiop',
+//     database: 'seek_forum'
+// })
+const db = new Pool({
+    create: () => {
+        return mysql.createConnection({
+            host: process.env.HOST_NAME,
+            user: process.env.USER,
+            password: process.env.PASSWORD,
+            database: process.env.DATABASE
+        });
+    },
+    validate: connection => {
+        // work-around for https://github.com/sidorares/node-mysql2/issues/939
+        return !connection?.connection?._closing;
+    },
+    destroy: connection => {
+        connection.destroy();
+    },
+    keepAliveInitialDelay: 10000, // 0 by default.
+    enableKeepAlive: true, // false by default.
+});
 // Connect to the database
 db.connect((err) => {
     if (err) {
