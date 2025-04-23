@@ -32,7 +32,7 @@ app.use(expressSanitizer());
 //     user: 'seek_forum_app',
 //     password: 'qwertyuiop',
 //     database: 'seek_forum'
-// })
+// }) 
 const db = mysql.createConnection({
     host: process.env.HOST_NAME,
     user: process.env.USER,
